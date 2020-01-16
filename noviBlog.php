@@ -49,10 +49,10 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="znak">Izaberi tip:</label>
+				<label for="tip">Izaberi tip:</label>
 				<select class="form-control" id="tip"  name="tip" >
 				<?php
-						$curl_zahtev = curl_init("http://localhost/seminarskipsiholog/rest/tipovi.json");
+						$curl_zahtev = curl_init("http://localhost/SeminarskiPsiholog/rest/tipovi.json");
 						curl_setopt($curl_zahtev, CURLOPT_RETURNTRANSFER, 1);
 						$curl_odgovor = curl_exec($curl_zahtev);
 						$json_objekat=json_decode($curl_odgovor, true);

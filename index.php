@@ -1,16 +1,6 @@
 <?php
 	include("konekcija.php");
 
-	$sort='order by t.tipID asc';
-
-	if(isset($_GET['sort'])){
-		if($_GET['sort']=='rastuce'){
-			$sort='order by t.tipID asc';
-		}
-		if($_GET['sort']=='opadajuce'){
-			$sort='order by t.tipID desc';
-		}
-	}
  ?>
 
 <!DOCTYPE html>

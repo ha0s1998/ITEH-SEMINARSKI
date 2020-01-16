@@ -21,6 +21,9 @@
                     <li>
                         <a class="page-scroll" href="blogovi.php">Blog</a>
                     </li>
+                    <li>
+                        <a class="page-scroll" href="vizuelizacija.php">Grafički prikaz</a>
+                    </li>
                     <?php if(!empty($_SESSION['ulogovaniKorisnik'])){ ?>
                       <li>
                           <a class="page-scroll" href="spisak.php">Psiholozi</a>

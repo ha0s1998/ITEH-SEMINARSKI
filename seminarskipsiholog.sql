@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 15, 2020 at 07:52 PM
+-- Generation Time: Jan 16, 2020 at 01:49 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -39,14 +39,19 @@ CREATE TABLE IF NOT EXISTS `blog` (
   `datum` date NOT NULL,
   PRIMARY KEY (`blogID`),
   KEY `tipID_fk` (`tipID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf32 COLLATE=utf32_croatian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf32 COLLATE=utf32_croatian_ci;
 
 --
 -- Dumping data for table `blog`
 --
 
 INSERT INTO `blog` (`blogID`, `tipID`, `naslov`, `opis`, `datum`) VALUES
-(2, 3, 'samo da haf', 'gfsdgf', '2020-01-15');
+(1, 2, '10 aktivnosti za koje nauka tvrdi da će vas učiniti srećnijim', '1.Mentalno izdvojite nešto dobro iz života\r\n2.Pošaljite poruku zahvalnosti\r\n3.Potrošite novac na nekog drugog\r\n4.Vežbajte\r\n5.Slušanje muzike\r\n6.Planiranje\r\n7.Navedite 3 dobre stvari koje su danas dogodile', '2020-01-22'),
+(2, 3, 'Panični napad i simptomi- testirajte se i proverite Vaš rezultat', 'https://www.anxietycentre.com/anxiety-tests/panic-attack-test.shtml\r\nNa linku koji se nalazi u donjem redu možete preuzeti besplatan test sa 10 pitanja, koji će Vam pomoći da proverite koliki je Vaš nivo anksioznosti i mogućnost paničnog poremećaja.', '2020-01-15'),
+(3, 2, 'Deset stvari koje kafa zaista radi vašem mozgu', '1-Kofein većinu ljudi ne sprečava da spavaju\r\n2-Ljudi krive kafu za sve i svašta\r\n3-Kofein i dremka?\r\n4-Pojačavanje održavanja pažnje\r\n5-Dve šolje dobro, pet šolja loše\r\n6-Bez simptoma povlačenja kada prestanete s uzimanjem?\r\n7-Dobro se osećate', '2020-01-01'),
+(4, 4, 'Socijalna fobija- socijalna anksioznost i strah od odbacivanja', 'Socijalna fobija (socijalni anksiozni poremećaj) podrazumeva intenzivni strah od različitih društvenih situacija – posebno situacije koje nisu poznate ili u kojoj osećate da ćete biti posmatrani ili vrednovani od strane drugih. Ove društvene situacije ', '2019-10-16'),
+(5, 1, 'Psihologija ljubavi koje traju čitav život', 'Nauka nam govori da romantična ljubav može da traje- i duže nego što joj često dajemo za pravo. Kao kultura, imamo tendenciju da budemo prilično cinični kada govorimo o mogućnostima romantične ljubavi', '2020-01-14'),
+(6, 3, 'Test ličnosti – Big Five. O testu, njegovim dimenzijama i besplatno testiranje', 'NEUROTICIZAM(N)-razlikuje prilagođenost ili emocionalnu stabilnost od neprilagođenosti i neuroticizma.\r\nEKSTRAVERZIJA(E)-socijabilni\r\nOTVORENOST(O)-aktivna imaginacija\r\nSARADLJIVOST(A)-bazično altruistična\r\nSAVESNOST(C)-sposobnost kontrole impulsa', '2020-04-10');
 
 -- --------------------------------------------------------
 
@@ -62,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `korisnik` (
   `password` varchar(255) COLLATE utf32_croatian_ci NOT NULL,
   `admin` tinyint(4) NOT NULL,
   PRIMARY KEY (`korisnikID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf32 COLLATE=utf32_croatian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf32 COLLATE=utf32_croatian_ci;
 
 --
 -- Dumping data for table `korisnik`
@@ -118,10 +123,10 @@ CREATE TABLE IF NOT EXISTS `tip` (
 --
 
 INSERT INTO `tip` (`tipID`, `nazivTipa`, `slikica`) VALUES
-(1, 'ljubav', ''),
-(2, 'top10', ''),
-(3, 'testovi', ''),
-(4, 'razno', '');
+(1, 'ljubav', 'heart'),
+(2, 'top10', 'list-ol'),
+(3, 'testovi', 'clipboard'),
+(4, 'razno', 'users');
 
 --
 -- Constraints for dumped tables

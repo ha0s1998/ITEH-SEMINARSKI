@@ -9,32 +9,41 @@ class Blog {
 	}
 
 	public function noviBlog() {
-		if(!isset($_POST['tip']) || !isset($_POST['naslov']) || !isset($_POST['opis']) || !isset($_POST['datum'])){
-			return false;
+		if(!isset($_POST['naslov']) || !isset($_POST['tip']) || !isset($_POST['opis']) || !isset($_POST['datum'])){
+			//return false;
 
 		}
-		if($_POST['tip']=='' || $_POST['naslov']=='' || $_POST['opis'] == '' || $_POST['datum'] == ''){
-			return false;
+		if($_POST['naslov']=='' || $_POST['tip']=='' || $_POST['opis'] == '' || $_POST['datum'] == ''){
+			//return false;
 
 		}
+
 		$parameters = '[{'.
 
-			'"tipID"'.':'.'"'.$_POST['tip'].'",'.
 			'"naslov"'.':'.'"'.$_POST['naslov'].'",'.
+			'"tip"'.':'.'"'.$_POST['tip'].'",'.
 			'"opis"'.':'.'"'.$_POST['opis'].'",'.
 			'"datum"'.':'.'"'.$_POST['datum'].'"'
 
 			.'}]';
 
+		
+		$mysqli = new mysqli("localhost", "root", "", "seminarskipsiholog");
+		$cols = '(tipID, naslov, opis, datum)';
 
-			$curl_zahtev = curl_init("http://localhost/SeminarskiPsiholog/rest/noviBlog.json");
-			curl_setopt($curl_zahtev, CURLOPT_POST, TRUE);
-			curl_setopt($curl_zahtev, CURLOPT_POSTFIELDS, $parameters);
-			curl_setopt($curl_zahtev, CURLOPT_RETURNTRANSFER, 1);
-			$curl_odgovor = curl_exec($curl_zahtev);
-			$json_objekat=json_decode($curl_odgovor, true);
-			curl_close($curl_zahtev);
+		$values = "('".$_POST['tip']."','".$_POST['naslov']."','".$_POST['opis']."','".$_POST['datum']."')";
 
+		$query = 'INSERT into blog '.$cols.' VALUES '.$values;
+
+		if($mysqli->query($query))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		$mysqli->close();
 
 
 			if($json_objekat == "Uspesno ste ubacili blog!") {
@@ -60,15 +69,15 @@ class Blog {
 		$parameters = '[{'.
 
 			'"naslov"'.':'.'"'.$_POST['naslov'].'",'.
-			'"tipID"'.':'.'"'.$_POST['tip'].'",'.
+			'"tipID"'.':'.'"'.$_POST['tipID'].'",'.
 			'"opis"'.':'.'"'.$_POST['opis'].'",'.
-			'"prognoza"'.':'.'"'.$id.'",'.
+			'"blog"'.':'.'"'.$id.'",'.
 			'"datum"'.':'.'"'.$_POST['datum'].'"'
 
 			.'}]';
 
 
-			$curl_zahtev = curl_init("http://localhost/SeminarskiPsiholog/rest/izmenaBloga.json");
+			$curl_zahtev = curl_init("http://localhost/SeminarskiPsiholog/rest/izmeni.json");
 			curl_setopt($curl_zahtev, CURLOPT_POST, TRUE);
 			curl_setopt($curl_zahtev, CURLOPT_POSTFIELDS, $parameters);
 			curl_setopt($curl_zahtev, CURLOPT_RETURNTRANSFER, 1);

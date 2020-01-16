@@ -47,14 +47,14 @@
 				<div class="well"><?php echo $poruka ?></div>
 			<?php } ?>
 			<div class="form-group">
-				<label for="tip">Izaberi tip:</label>
-				<select class="form-control" id="tip" name="tip">
+				<label for="tipID">Izaberi tip:</label>
+				<select class="form-control" id="tipID" name="tipID">
 				<?php 
 				$tipovi= $db->get("tip");
 				$db->where("tipID",$blog[0]["tipID"]);
-				$z = $db->getOne("tip");
+				$t = $db->getOne("tip");
 				?>
-					<option value="<?php echo($z['tipID']); ?>"><?php echo($z['nazivTipa']); ?></option>
+					<option value="<?php echo($t['tipID']); ?>"><?php echo($t['nazivTipa']); ?></option>
 				<?php
 					foreach($tipovi as $tip):
 				?>
