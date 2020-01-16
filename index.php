@@ -1,186 +1,87 @@
 <?php
-include ('logovanje.php');
-?>
-    <!DOCTYPE html>
-    <html lang="en">
+	include("konekcija.php");
 
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/png" href="img/Ikona.png"/>
-        <title>Online Psiholog</title>
-        <!-- Bootstrap core CSS -->
-        <link href="css/bootstrap.css" rel="stylesheet">
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <!--<link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">-->
-        <!-- Custom styles for this template -->
-        <link href="css/style.css" rel="stylesheet">
-    </head>
+	$sort='order by t.tipID asc';
 
-    <body>
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand em-text" href="">Online Psiholog</a>
-                </div>
-                <div id="navbar" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="blog.php">&nbsp;&nbsp;&nbsp;&nbsp;Blog</a></li>
-                        <li><a href="biografija.php">Biografija</a></li>
-                        <li><a href="chat.php">Live chat</a></li>
-                    </ul>
+	if(isset($_GET['sort'])){
+		if($_GET['sort']=='rastuce'){
+			$sort='order by t.tipID asc';
+		}
+		if($_GET['sort']=='opadajuce'){
+			$sort='order by t.tipID desc';
+		}
+	}
+ ?>
 
-                    <div id="login">
-                        <ul id="loginlista" class="nav navbar-nav">
+<!DOCTYPE html>
+<html lang="en">
 
-<?php
+ 
+<?php include("header.php"); ?>
 
-if (isset($_SESSION['username'])) {
-	echo '<li><a href="">Dobrodosao ' . ucfirst("{$_SESSION['username']}") . '!</a></li>';
-	echo '<li><a href="adminsec.php">Admin sekcija</a></li>';
-	echo '<li><a href="logout.php">Logout</a></li>';
-}
-else {
-	echo '<li> <a href="login.php">Login/Register</a></li>';
-}
+<body id="page-top" class="index">
 
-?>
+    <?php include("menu.php"); ?>
 
-                        </ul>
-                    </div>
-                </div>
+    <header>
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in"> Dobrodošli! </div>
+                <div class="intro-heading">Drago nam je što ste ovde...</div>
+                <a href="index.php#blogovi" class="page-scroll btn btn-xl"> Pogledajte neke od blogova</a>
             </div>
-        </nav>
+        </div>
+    </header>
 
-
-        <div class="slideshow-container" style="text-align:center">
-
-                <br><br>
-
-                <div class="mySlides fade">
-                    <img src="img/slika2.jpg" style="width:80%">
-                    <div class="text" style="bottom: 100px; color:white"><b>Želite da vidite odgovore na najčešća pitanja?</b>
-                        <br>
-                        Otvorili smo novi blog sa najčešćim pitanjima za Vas!
-                        <br>
-                        <a href="blog.php" class="btn btn-primary">Uđi na blog</a>
-                    </div> 
-                </div>
-
-                <div class="mySlides fade">
-                    <img src="img/slika3.jpg" style="width:80%">
-                    <div class="text" style="bottom: 100px; color:black" ><b>Još uvek nemate nalog?</b>
-                        <br>
-                        Ulogujte se i pristupite našem online chat-u!
-                        <br>
-                        <a href="#" class="btn btn-primary">Napravi nalog</a>
-                    </div>
-                </div>
-
-                <div class="mySlides fade">
-                    <img src="img/slika4.jpg" style="width:80%">
-                    <div class="text" style="bottom: 100px; color:black" ><b>Naš psiholog, Mihailo Igić</b>
-                        <br>
-                        Vidite životno iskustvo ovog mladog psihologa,zaintrigiraće vas.
-                        <br>
-                        <a href="biografija.php" class="btn btn-primary">Vidi biografiju</a>
-                    </div>                   
-                </div>
-
-                
-                <br><br>
-                <div style="text-align:center" id='tacke'>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                </div>
+    <section id="blogovi">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Online psiholog</h2>
+                    <h3 class="section-subheading text-muted">Ovde možete pronaći naše blogove</h3>
+					
+				</div>
             </div>
 
-
-        <section id="middle">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
                         <img src="img/slika5.jpg" class="demo">
                         <h2>10 aktivnosti za koje nauka tvrdi da će vas učiniti srećnijim</h2>
                         <p>Poruka u kojoj se zahvaljujete, trošenje na druge, slušanje muzike, srećno sanjarenje u budnom stanju…Nauka vas može učiniti srećnijim. 
-                            Uradite bar neke od ovih aktivnosti danas i osećajte tok pozitivnih vibracija. Nastavite da to radite nedelju dana ili duže i osetite koliko vam se raspoloženje popravlja...
+                            Uradite bar neke od ovih aktivnosti danas i osećajte tok pozitivnih vibracija. Nastavite da to radite nedelju dana ili duže i osetite koliko vam se raspoloženje popravlja... 
                             <a href="blog.php">Pogledaj dalje</a></p>
                     </div>
                     <div class="col-md-4">
                         <img src="img/slika6.jpg" class="demo">
                         <h2>Kako pobediti strah od ludila?</h2>
-                        <p><b>Da li je strah uvod u šizofreniju?</b> Da bi razumeli problematiku ludila i da li se može poludeti od straha ili bilo čega drugog, treba da se usaglasimo oko definicije ludila.<a href="blog.php">Pogledaj dalje</a></p>
+                        <p><b>Da li je strah uvod u šizofreniju?</b> Da bi razumeli problematiku ludila i da li se može poludeti od straha ili bilo čega drugog, treba da se usaglasimo oko definicije ludila. <a href="blog.php">Pogledaj dalje</a></p>
                     </div>
                     <div class="col-md-4">
                         <img src="img/slika7.jpg" class="demo">
                         <h2>Kako lečiti opsesivno kompulzivni poremećaj – kontrola kompulzija</h2>
-                        <p>Zbog čega se ovo dešava i kako uspostaviti osnovnu i početnu kontrolu nad opsesivnim mislima, pogledajte u video snimku koji smo pripremili za Vas.<a href="blog.php">Pogledaj dalje</a></p>
+                        <p>Zbog čega se ovo dešava i kako uspostaviti osnovnu i početnu kontrolu nad opsesivnim mislima, pogledajte u video snimku koji smo pripremili za Vas. <a href="blog.php">Pogledaj dalje</a></p>
 
                     </div>
                 </div>
             </div>
-        </section>
 
-        <section>
 
-        </section>
+            
+        </div>
+    </section>
 
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <ul>
-                            <li><a href="index.php">Početna</a></li>
-                            <li><a href="blog.php">Blog</a></li>
-                            <li><a href="chat.php">Live chat</a></li>
-                            <li><a href="biografija.php">Biografija</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6">
+    <?php include("footer.php"); ?>
 
-                    </div>
-                </div>
-            </div>
-        </footer>
+    <script src="vendor/jquery/jquery.min.js"></script>
 
-        <!-- Bootstrap core JavaScript
- ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="js/bootstrap.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
-        <script>
-            var slideIndex = 0;
-            showSlides();
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
-            function showSlides() {
-                var i;
-                var slides = document.getElementsByClassName("mySlides");
-                var dots = document.getElementsByClassName("dot");
-                for (i = 0; i < slides.length; i++) {
-                    slides[i].style.display = "none";
-                }
-                slideIndex++;
-                if (slideIndex > slides.length) {
-                    slideIndex = 1
-                }
-                for (i = 0; i < dots.length; i++) {
-                    dots[i].className = dots[i].className.replace(" active", "");
-                }
-                slides[slideIndex - 1].style.display = "block";
-                dots[slideIndex - 1].className += " active";
-                setTimeout(showSlides, 5000); // Change image every 5 seconds
-            }
-        </script>
+    <script src="js/psiholog.js"></script>
 
-    </body>
 
-    </html>
+</body>
+
+</html>
