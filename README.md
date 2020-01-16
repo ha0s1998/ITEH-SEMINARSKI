@@ -1,6 +1,8 @@
 # ITEH-SEMINARSKI
 Seminarski iz ITEH-a pod nazivom "Online Psiholog"
 
-pocetna verzija osnovnog indexa bloga i biografije
+Pocetna verzija osnovnog indexa bloga i biografije
+Mihailo Igic
 
-Mihailo IGic
+Dorađen dizajn, dodati psiholozi koji su povezani sa bazom, login i registracija
+Maša Aleksić
